@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.blAlberto.meteoGalicia.Estacion;
+package com.blAlberto.meteoGalicia.Provincia;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Alberto
+ * @author A
  */
 @Service
-public interface EstacionService {
+public interface ProvinciaService {
 
-    List<Estacion> getEstacionsByProvinciaId (Integer idProvincia);
+    public List<Provincia> obterProvincias ();
+
 }

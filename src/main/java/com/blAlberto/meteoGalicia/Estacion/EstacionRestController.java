@@ -5,6 +5,7 @@
  */
 package com.blAlberto.meteoGalicia.Estacion;
 
+import com.blAlberto.meteoGalicia.Provincia.ProvinciaService;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class EstacionRestController {
 
     EstacionService estacionService;
+    ProvinciaService provinciaService;
 
-    public EstacionRestController(EstacionService estacionService) {
+    public EstacionRestController (EstacionService estacionService, ProvinciaService provinciaService) {
         this.estacionService = estacionService;
+        this.provinciaService = provinciaService;
     }
 
     @RequestMapping("/lista")
-    public List<Estacion> listarEstacions(@RequestParam(required = false) Integer idProvincia) {
-        if (idProvincia == null) {
-            return estacionService.obterEstacions();
-        } else {
-            return null;
-        }
+    public List<Estacion> listarEstacions (@RequestParam(required = true) Integer idProvincia) {
+
+        return null;
+
     }
 
 }

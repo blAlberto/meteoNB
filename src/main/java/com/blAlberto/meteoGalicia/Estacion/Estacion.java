@@ -6,6 +6,9 @@
 package com.blAlberto.meteoGalicia.Estacion;
 
 import com.blAlberto.meteoGalicia.Provincia.Provincia;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,15 +26,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Estacion {
+public class Estacion implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer _id;
+    @Column(name = "_id")
+    private Integer id;
     private String nome;
     private String concello;
-    
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name="idProvincia")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idprovincia", nullable = false)
     private Provincia provincia;
 
 }

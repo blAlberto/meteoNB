@@ -5,6 +5,8 @@
  */
 package com.blAlberto.meteoGalicia.Provincia;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +21,11 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Provincia {
-    
+public class Provincia implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer _id;
+    @Column(name = "_id")
+    private Integer id;
     private String nome;
-    
 }

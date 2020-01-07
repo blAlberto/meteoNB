@@ -29,7 +29,7 @@ import lombok.Setter;
 public class Estacion implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "_id")
     private Integer id;
     private String nome;

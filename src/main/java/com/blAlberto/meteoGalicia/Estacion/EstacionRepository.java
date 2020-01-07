@@ -18,4 +18,7 @@ public interface EstacionRepository extends JpaRepository<Estacion, Integer> {
 
     List<Estacion> findByProvinciaId (Integer id);
 
+    List<Estacion> findAllByOrderByProvinciaIdAscNomeAsc ();
+//    @Override
+//    Estacion save (Estacion estacion);
 }

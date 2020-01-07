@@ -24,7 +24,7 @@ import lombok.Setter;
 public class Provincia implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "_id")
     private Integer id;
     private String nome;

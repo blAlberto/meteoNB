@@ -16,4 +16,12 @@ import org.springframework.stereotype.Service;
 public interface EstacionService {
 
     List<Estacion> getEstacionsByProvinciaId (Integer idProvincia);
+
+    Estacion guardar (Estacion estacion);
+
+    Estacion getEstacionById (Integer id);
+
+    public List<Estacion> getAll ();
+
+    public void borrarEstacionConId (Integer id);
 }

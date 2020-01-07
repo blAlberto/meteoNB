@@ -12,29 +12,6 @@
         <title>Hello, world!</title>
     </head>
     <body>
-        <div class="container mt-4">
-            <table class="table  table-striped">
-                <thead class="thead-dark">
-                    <tr class="row">
-                        <th class="col-xl-4">Nombre</th>
-                        <th class="col-xl-4">Ayuntamiento</th>
-                        <th class="col-xl-3">Provincia</th>
-                        <th class="col-xl-1"><a class="btn btn-light" th:href="@{/estacion/nueva}"><i class="fa fa-plus"></i></a></th>
-                    </tr>
-                </thead>
-                <tbody class="col">
-                    <tr class="row" th:each="estacion: ${estacions}">
-                        <td class="col-xl-4" th:text="${estacion.getNome()}"/>
-                        <td class="col-xl-4" th:text="${estacion.getConcello()}"/>
-                        <td class="col-xl-3" th:text="${estacion.getProvincia().getNome()}"/>
-                        <td class="col-xl-1">
-                            <a th:href="@{'/estacion/' + ${estacion.getId()} + '/detalle'}"><i class="fa fa-pencil"></i></a>
-                            <a th:href="@{'/estacion/' + ${estacion.getId()} + '/borrar'}"><i class="fa fa-eraser"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

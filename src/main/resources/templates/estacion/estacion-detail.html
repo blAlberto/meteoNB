@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" layout:decorate="~{../../layout}">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <title>Hello, world!</title>
+    </head>
+    <body>
+        <div class="container mt-4">
+            <form th:action="@{/estacion/guardar}" th:object="${estacion}" method="post">
+                <fieldset>
+                    <legend th:text="${estacion.getId() == null ? 'Nueva estacion' : 'Editar estacion'}"/>
+                    <div class="form-group">
+                        <label for="nome">Nombre</label>
+                        <input id="nome" type="text" th:field="*{nome}" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="provincia">Provincia</label>
+                        <select id="provincia" class="form-control" name="provincia" required>
+                            <!-- si estamos viendo detalle de una estacion solo se muestra la provincia en el select y se desactiva -->
+                            <option th:if="${estacion.getId() == null}" th:value="${null}"></option>
+                            <option th:each="provincia: ${provincias}"
+                                th:value="${provincia.getId()}"
+                                th:text="${provincia.getNome()}" th:selected="${provincia.getId() == estacion.getProvincia()?.getId()}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="concello">Ayuntamiento</label>
+                        <input type="text" id="concello" class="form-control" th:field="*{concello}">
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a th:href="@{/estacion/}" class="btn btn-secondary">Al listado</a>
+            </form>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

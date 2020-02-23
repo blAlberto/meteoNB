@@ -46,8 +46,8 @@ public class ProvinciaRestController {
     }
 
     @PostMapping("/{idProvincia}/estacions/nova")
-    public ResponseEntity<Estacion> novaEstacion (@RequestBody Estacion estacion) {
+    public ResponseEntity<Estacion> novaEstacion (@RequestBody Estacion estacion, @PathVariable("idProvincia") Integer idProvincia) {
 
-        return null;
+        return new ResponseEntity<>(estacion, HttpStatus.OK);
     }
 }

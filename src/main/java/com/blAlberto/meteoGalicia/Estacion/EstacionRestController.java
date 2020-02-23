@@ -7,10 +7,10 @@ package com.blAlberto.meteoGalicia.Estacion;
 
 import com.blAlberto.meteoGalicia.Provincia.ProvinciaService;
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,16 +29,14 @@ public class EstacionRestController {
         this.provinciaService = provinciaService;
     }
 
-    @RequestMapping("/lista")
-    public List<Estacion> listarEstacions (@RequestParam(required = true) Integer idProvincia) {
-
-        return null;
+    @RequestMapping("/{idProvincia}/lista")
+    public List<Estacion> listarEstacions (@PathVariable Integer idProvincia) {
+        return estacionService.getEstacionsByProvinciaId(idProvincia);
     }
 
-    @PostMapping("/nueva")
+    @PostMapping("/guardar")
     public Estacion nuevaEstacion (@RequestBody Estacion estacion) {
-
-        return null;
+        return estacionService.guardar(estacion);
     }
 
 }
